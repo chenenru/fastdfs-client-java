@@ -5,8 +5,6 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.util.Arrays;
@@ -17,7 +15,7 @@ import java.util.Arrays;
  */
 public class FdfsTest {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(FdfsTest.class);
+    //private static final //LOGGER //LOGGER = //LOGGERFactory.get//LOGGER(FdfsTest.class);
 
     private static final String CONF_NAME = "fdfstest.conf";
 
@@ -28,8 +26,8 @@ public class FdfsTest {
     @Before
     public void initStorageClient() throws Exception {
         ClientGlobal.init(CONF_NAME);
-        LOGGER.info("network_timeout=" + ClientGlobal.g_network_timeout + "ms");
-        LOGGER.info("charset=" + ClientGlobal.g_charset);
+        //LOGGER.info("network_timeout=" + ClientGlobal.g_network_timeout + "ms");
+        //LOGGER.info("charset=" + ClientGlobal.g_charset);
         TrackerClient tracker = new TrackerClient();
         trackerServer = tracker.getTrackerServer();
         StorageServer storageServer = null;
@@ -38,7 +36,7 @@ public class FdfsTest {
 
     @After
     public void closeClient() {
-        LOGGER.info("close connection");
+        //LOGGER.info("close connection");
         if(storageClient != null){
             try {
                storageClient.close();
@@ -81,7 +79,7 @@ public class FdfsTest {
         byte[] bytes = new byte[length];
         inputStream.read(bytes);
         String[] result = storageClient.upload_file(bytes, null, metaList);
-        LOGGER.info("result {}", Arrays.asList(result));
+        //LOGGER.info("result {}", Arrays.asList(result));
         Assert.assertEquals(2, result.length);
     }
 
@@ -109,7 +107,7 @@ public class FdfsTest {
         Assert.assertTrue(storageClient.isConnected());
         // pool testOnborrow  isAvaliable
         Assert.assertTrue(storageClient.isAvaliable());
-        LOGGER.info("result {}", Arrays.asList(result));
+        //LOGGER.info("result {}", Arrays.asList(result));
         byte[] resultbytes = storageClient.download_file(result[0], result[1]);
         writeByteToFile(resultbytes, local_filename);
         File downfile = new File(local_filename);
