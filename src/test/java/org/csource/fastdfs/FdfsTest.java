@@ -37,12 +37,12 @@ public class FdfsTest {
     @After
     public void closeClient() {
         //LOGGER.info("close connection");
-        if(storageClient != null){
+        if (storageClient != null) {
             try {
-               storageClient.close();
-            }catch (Exception e){
+                storageClient.close();
+            } catch (Exception e) {
                 e.printStackTrace();
-            }catch (Throwable e){
+            } catch (Throwable e) {
                 e.printStackTrace();
             }
         }
@@ -69,7 +69,7 @@ public class FdfsTest {
     }
 
     @Test
-    public void upload() throws Exception{
+    public void upload() throws Exception {
         NameValuePair[] metaList = new NameValuePair[1];
         String local_filename = "build.PNG";
         metaList[0] = new NameValuePair("fileName", local_filename);
